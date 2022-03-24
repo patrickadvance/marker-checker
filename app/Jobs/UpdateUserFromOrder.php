@@ -38,9 +38,9 @@ class UpdateUserFromOrder implements ShouldQueue
     public function handle()
     {
         $user = User::findOrFail($this->order->user_id);
-        $user->first_name = $this->order->changes->first_name;
-        $user->last_name = $this->order->changes->last_name;
-        $user->email = $this->order->changes->email;
+        $user->first_name = $this->order->changes['first_name'];
+        $user->last_name = $this->order->changes['last_name'];
+        $user->email = $this->order->changes['email'];
         $user->save();
     }
 }

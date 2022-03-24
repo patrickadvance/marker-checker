@@ -22,7 +22,6 @@ class LoginController extends Controller
             'device_name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required',
-            'scope' => 'nullable|string',
         ]);
 
         $user = User::where('email', $request->email)->first();
@@ -34,6 +33,6 @@ class LoginController extends Controller
             ]);
         }
 
-        return $user->createToken($request->device_name)->plainTextToken;
+        return $user->createToken($request->device_name);
     }
 }

@@ -16,7 +16,7 @@ class OrderFactory extends Factory
     {
         return [
             'sent_by' => auth()->id() || 1,
-            'last_name' => $this->faker->name(),
+            'type' => Order::CREATE_TYPE,
             'changes' => [
                 "first_name" => $this->faker->name(),
                 "last_name" => $this->faker->name(),

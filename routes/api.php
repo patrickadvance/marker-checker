@@ -23,10 +23,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Authentication...
-Route::post('login', [LoginController::class])->name('login');
-Route::post('logout', [LogoutController::class])->middleware('auth:sanctum')->name('logout');
+Route::post('login', LoginController::class)->name('login');
+Route::post('logout', LogoutController::class)->middleware('auth:sanctum')->name('logout');
 
 Route::apiResource('orders',OrderController::class)->middleware(['auth:sanctum','role:admin']);
 
-Route::get('orders/{order}/approve', [OrderController::class,'approve'])->name('order.approve');
-Route::get('orders/{order}/decline', [OrderController::class,'decline'])->name('order.decline');
+Route::get('orders/{order}/approve', [OrderController::class,'approve'])
+->name('orders.approve')
+->middleware(['auth:sanctum','role:admin']);
+
+Route::get('orders/{order}/decline', [OrderController::class,'decline'])
+->name('orders.decline')
+->middleware(['auth:sanctum','role:admin']);;

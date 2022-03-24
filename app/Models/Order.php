@@ -49,4 +49,11 @@ class Order extends Model
     protected $casts = [
         'changes' => AsCollection::class,
     ];
+
+    /**
+     * The attributes that are not mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
 }

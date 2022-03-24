@@ -29,15 +29,18 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        $order = $request->user()->orders->create($request->only(['user_id','type','changes']));
+        // $order = $request->user()->orders()->create($request->only(['user_id','type','changes']));
 
-        $order->status = Order::PENDING_STATUS;
-
-        $order->save();
+        $order = $request->user()->orders()->create([
+            'type' => $request->input('type'),
+            'user_id' => $request->input('user_id'),
+            'changes' => $request->input('changes'),
+            'status' => Order::PENDING_STATUS
+        ]);
 
         event(new OrderSubmitted($order));
 
-        return $order->fresh();
+        return $order;
     }
 
     /**

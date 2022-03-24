@@ -25,7 +25,7 @@ class StoreOrderRequest extends FormRequest
     {
         return [
             'type' => 'required|string|max:255',
-            'changes' => 'nullable|json',
+            'changes' => 'nullable',
             'user_id' => 'nullable',
         ];
     }

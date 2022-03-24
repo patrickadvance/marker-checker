@@ -44,7 +44,7 @@ class NewOrderSubmitted extends Notification
                     ->subject('New Order Request Submitted')
                     ->greeting('Hello!')
                     ->line('A new order request was submitted')
-                    ->action('View Order', route('order.index'))
+                    ->action('View Order', route('orders.index'))
                     ->line('Thank you for your expected prompt response.');
     }
 
