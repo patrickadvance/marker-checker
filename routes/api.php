@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Sanctum\LoginController;
 use App\Http\Controllers\Sanctum\LogoutController;
+use Spatie\Permission\Contracts\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +25,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Authentication...
 Route::post('login', [LoginController::class])->name('login');
 Route::post('logout', [LogoutController::class])->middleware('auth:sanctum')->name('logout');
+
+Route::apiResource('orders',OrderController::class)->middleware(['auth:sanctum','role:admin']);
+
+Route::get('orders/{order}/approve', [OrderController::class,'approve'])->name('order.approve');
+Route::get('orders/{order}/decline', [OrderController::class,'decline'])->name('order.decline');
