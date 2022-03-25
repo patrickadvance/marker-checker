@@ -14,32 +14,32 @@ class Order extends Model
     /**
      * This constant is used for a pending order
      */
-    public const PENDING_STATUS = "1";
+    const PENDING_STATUS = "1";
 
     /**
      * This constant is used for a approved order
      */
-    public const DECLINED_STATUS = "2";
+    const DECLINED_STATUS = "2";
 
     /**
      * This constant is used for a approved order
      */
-    public const APPROVED_STATUS = "3";
+    const APPROVED_STATUS = "3";
 
     /**
      * This constant is used for a order create type
      */
-    public const CREATE_TYPE = "create";
+    const CREATE_TYPE = "create";
 
     /**
      * This constant is used for a order update type
      */
-    public const UPDATE_TYPE = "update";
+    const UPDATE_TYPE = "update";
 
     /**
      * This constant is used for a order update type
      */
-    public const DELETE_TYPE = "delete";
+    const DELETE_TYPE = "delete";
 
     /**
      * The attributes that should be cast.

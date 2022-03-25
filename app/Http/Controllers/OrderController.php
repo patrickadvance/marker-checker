@@ -29,8 +29,6 @@ class OrderController extends Controller
      */
     public function store(StoreOrderRequest $request)
     {
-        // $order = $request->user()->orders()->create($request->only(['user_id','type','changes']));
-
         $order = $request->user()->orders()->create([
             'type' => $request->input('type'),
             'user_id' => $request->input('user_id'),

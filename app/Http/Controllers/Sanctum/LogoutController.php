@@ -18,6 +18,6 @@ class LogoutController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
 
-        return response("Tokens delected successfully", 201);
+        return response("Token deleted successfully", 201);
     }
 }
