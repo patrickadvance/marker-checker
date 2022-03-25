@@ -8,8 +8,6 @@ use App\Models\User;
 use App\Models\Order;
 use App\Notifications\NewOrderSubmitted;
 use Laravel\Sanctum\Sanctum;
-use Database\Seeders\RoleSeeder;
-use Database\Seeders\AdminSeeder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,43 +17,7 @@ class OrderTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_an_admin_can_login_using_email_and_password()
-    {
-        $user = User::FindOrFail(1);
-
-        $response = $this->post(route('login'),[
-            "email" => $user->email,
-            "password" => 'password',
-            'device_name' => "Glover"
-        ]);
-
-        $response->assertSee('accessToken');
-
-        $response->assertStatus(200);
-    }
-
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_an_admin_can_logout()
-    {
-        $user = User::FindOrFail(1);
-
-        Sanctum::actingAs($user);
-
-        $response = $this->post(route('logout'));
-
-        $response->assertStatus(201);
-    }
-
-    /**
-     * A basic feature test example.
+     * A basic feature that an admin can submit an order request and notify other administrators.
      *
      * @return void
      */
@@ -95,7 +57,7 @@ class OrderTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * A basic feature that an admin can approve a pending order.
      *
      * @return void
      */
@@ -121,7 +83,7 @@ class OrderTest extends TestCase
     }
 
     /**
-     * A basic feature test example.
+     * A basic feature that an admin can decline a pending order.
      *
      * @return void
      */
